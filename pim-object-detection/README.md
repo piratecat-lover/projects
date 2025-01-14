@@ -1,8 +1,14 @@
 # pim-object-detection
-Repository for SNU 2024 Fall Semester Robot Vision Class. We add a PIM module to various object detection models and test their efficacy on diverse datasets. Collaborative work with SNU Mech. Eng 김건우 and 최진석.
+Class project files for Robot Vision by Professor Jong-woo Lim at SNU ME.
+
+### Project Description
+We add a PIM module to various object detection models and test their efficacy on diverse datasets. 
+
+### Members
+이승섭, 김건우, 최진석 (SNU ME)
 
 
-# GIT LFS 시스템 사용 방법
+### GIT LFS 시스템 사용 방법
 Git lfs를 이용해 대용량 파일을 깃허브로 공유하는 방식입니다.
 출처1: https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage
 출처2: https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage
