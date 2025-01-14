@@ -1,0 +1,94 @@
+body {
+    font-family: 'Crete Round', sans-serif;
+    margin: 0 10%;
+  }
+  
+  .box {
+    border: 2px solid #a2a2a6;
+    padding: 10px;
+    margin: 10px auto;
+  }
+  
+  .colorbox {
+    width: 100%;
+  }
+  
+  .color-panel {
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+    margin: 20px auto;
+    min-height: 100px;
+  }
+  
+  .eastern-blue {
+    background-color: #2088B2;
+    color: #fff;
+  }
+  
+  .shuttle-gray {
+    background-color: #5F6672;
+    color: #fff;
+  }
+  
+  .affair {
+    background-color: #745185;
+    color:#fff;
+  }
+  
+  .roman-coffee {
+    background-color: #855a51;
+    color:#fff;
+  }
+  
+  .font-panel {
+    width: 45%;
+    display: inline-block;
+  }
+  
+  .font-label {
+    font-size: 20px;
+    text-decoration: underline;
+  }
+  
+  .regular {
+    font-style: normal;
+  }
+  
+  .italic {
+    font-style: italic;
+  }
+  
+  .bold {
+    font-weight: 700;
+  }
+  
+  .cormorant-garamond {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  
+  .crete-round {
+    font-family: 'Crete Round', sans-serif;
+  }
+  
+  .great-vibes {
+    font-family: 'Great Vibes', monospace;
+  }
+  
+  .text-panel h1 {
+    font-weight: 700;
+    font-size: 32px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  
+  .text-panel h2 {
+    font-weight: 500;
+    font-size: 18px;
+    font-family: 'Crete Round', sans-serif;
+  }
+  
+  .text-panel p {
+    font-weight: 400;
+    font-size: 14px;
+    font-family: 'Great Vibes', monospace;
+  }

@@ -1,0 +1,238 @@
+*{
+    font-family:Helvetica;
+    font-size:22px;
+    color:seashell;
+    background-color:black;
+    opacity:0.9;
+    text-align:center;
+    margin:0;
+    padding:0;
+  }
+
+header{
+    box-sizing:border-box;
+    display:flex;
+    position:fixed;
+    z-index:1;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    height:70px;
+    border-bottom:solid seashell 1px;
+    background-color:black;
+}
+
+h2 {
+    font-size:40px;
+    font-weight:700px;
+}
+h3 {
+    font-size:30px;
+    font-weight:700;
+}
+h4 {
+    font-size:20px;
+    font-weight:700;
+}
+h5 {
+    font-size:16px;
+}
+
+.logo{
+    height:50px;
+    margin-left:10px;
+}
+
+nav {
+    display:flex;
+    justify-content:flex-end;
+    flex-wrap:nowrap;
+    min-width:400px;
+}
+
+li{
+    display:inline-block;
+    text-decoration:underline;
+    text-align:center;
+    margin: auto 20px;
+}
+@media screen and (max-width: 700px) {
+    nav {
+        flex-flow: nowrap;
+        padding: 0;
+    }
+
+    nav a {
+        text-align: center;
+        padding: 10px;
+    }
+
+    header {
+        height: auto;
+    }
+}
+
+main{
+    display:block;
+    position:relative;
+    top:70px;
+}
+.mission-container {
+    box-sizing:content-box;
+    display:flex;
+    height:700px;
+    width: 1200px;
+    background-image:url(https://content.codecademy.com/courses/freelance-1/unit-4/img-mission-background.jpg);
+    background-position:center;
+    background-size:cover;
+    align-items:center;
+    margin:auto;
+    overflow:hidden;
+}
+
+@media screen and (max-width: 1200px){
+    .mission-container {
+        width: auto;
+    }
+
+    .mission-container h2, h4{
+        width: auto;
+    }
+    
+}
+
+@media screen and (max-width: 700px) {
+    .mission-container {
+        top: 138px;
+    }
+    
+}
+
+.mission-statement{
+    display:block;
+    width:100%;
+    text-align:center;
+    background-color:black;
+    opacity:1;
+}
+.mission-statement h2 {
+    margin:10px auto;
+}
+
+.mission-statement h4 {
+    margin: 20px 0 10px 0;
+}
+
+.featured-tea-container{
+    box-sizing:content-box;
+    display:inline-block;
+    margin:10px;
+    min-height:100px;
+    max-width:1000px;
+    background-color:black;
+    background-position:center;
+    background-size:cover;
+    margin:auto;
+    opacity:1;
+}
+
+.tea-statement-container{
+    display:block;
+    width:100%;
+    text-align:center;
+    background-color:black;
+    opacity:1;
+    margin:20px auto;
+    z-index:10;
+}
+
+.tea-container{
+    display:flex;
+    align-content:space-around;
+    justify-content:center;
+    flex-wrap:wrap;
+    max-width:1000px;
+}
+
+.tea {
+    justify-content:center;
+    margin:10px;
+}
+.tea img {
+    height:200px;
+    width:300px;
+}
+
+.location-container{
+    box-sizing:content-box;
+    display:block;
+    height:500px;
+    width: 1000px;
+    background-image:url(https://content.codecademy.com/courses/freelance-1/unit-4/img-locations-background.jpg);
+    background-position:center;
+    background-size:cover;
+    margin: 30px auto;
+}
+
+.location-title{
+    width:100%;
+    position:relative;
+    top: 30px;
+    background-color:transparent;
+    margin:0 auto;
+}
+.location-title h2{
+    background-color:transparent;
+}
+
+.locations{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    max-width:1000px;
+    background-color:transparent;
+    margin:50px auto;
+    opacity:1;
+}
+
+.location{
+    display:inline;
+    width:300px;
+    margin:auto 40px;
+    opacity:1;
+    text-align:center;
+}
+
+.location h3 {
+    font-weight:700;
+    margin:40px auto;
+}
+.location h5{
+    margin: 40px auto;
+}
+
+.contact{
+    display:block;
+    height:200px;
+    text-align:center;
+    margin:auto;
+}
+
+.contact h5 {
+    font-weight:400px;
+    font-size:12px;
+    margin: 20px auto;
+}
+
+.copyright {
+    display:inline;
+    float:left;
+    margin-left:20px;
+}
+
+.copyright p{
+    text-align:left;
+    font-size:14px;
+    opacity:0.9;
+    font-weight:400;
+}
