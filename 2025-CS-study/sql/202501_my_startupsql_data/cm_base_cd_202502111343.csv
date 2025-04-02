@@ -1,0 +1,25 @@
+"base_cd_dv","base_cd","base_cd_nm","sort_seq"
+entry_rslt_cd,FAIL,Fail,2
+entry_rslt_cd,SUCC,Success,1
+hot_cold_cd,COLD,Cold,2
+hot_cold_cd,HOT,Hot,1
+item_size_cd,BIG,Big Size,2
+item_size_cd,REG,Regular Size,1
+join_tp,DRCT,Direct,1
+join_tp,INV,Invited,3
+join_tp,SNS,Soical Network Service,2
+mbr_gd,GOLD,Gold,2
+mbr_gd,PLAT,Platinum,1
+mbr_gd,SILV,Silver,3
+mbr_st,ACTV,Active Member,1
+mbr_st,INAC,Inactive Member,2
+ord_st,MFGC,Manufactured,2
+ord_st,PKUP,Picked Up,3
+ord_st,PREP,Preparing,1
+pay_tp,CARD,Card,2
+pay_tp,CASH,Cash,1
+shop_oper_tp,DIST,Distributor,3
+shop_oper_tp,DRCT,Directly,2
+shop_oper_tp,FLAG,Flagship,1
+shop_st,CLSD,Closed,2
+shop_st,OPEN,Open,1
