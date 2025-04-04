@@ -5,9 +5,9 @@
 
 문제)
 https://dev.mysql.com/doc/refman/8.0/en/string-functions.html를 참고해 다음 함수의 기능을 정리하세요.
-  ㅁ CHAR_LENGTH:
-  ㅁ REPEAT:
-  ㅁ TRIM:
+  ㅁ CHAR_LENGTH: CHAR_LENGTH(str) 함수는 str의 길이를 문자 단위로 반환한다. 이 때 CHAR_LENGTH(NULL) = NULL, CHAR_LENGTH('')=0이다.
+  ㅁ REPEAT: REPEAT(str, count) 함수는 str을 count만큼 반복한 문자열을 반환한다. 이 때 count가 1보다 작으면 빈 문자열 ''을 반환하고, str이나 count가 NULL이면 NULL을 반환한다.
+  ㅁ TRIM: TRIM([{BOTH | LEADING | TRAILING} [remstr] FROM] str) 함수, 혹은 TRIM([remstr FROM] str) 함수는 str의 양쪽 / 왼쪽 / 오른쪽에서 모든 remstr을 제거한 문자열을 반환한다. 이 때 remstr이 지정되지 않았으면 공백을 제거하고, str이나 remstr이 NULL이면 NULL을 반환한다.
 
 
 ------------------------------------------------------------------------
@@ -32,7 +32,7 @@ https://dev.mysql.com/doc/refman/8.0/en/string-functions.html를 참고해 다�
     BGLR     000000BGLR   Bagel(R)            
     ...생략...
 
-
+SELECT item_id, LPAD(item_id, 10, '0') AS new_item_id, item_nm FROM ms_item;
 
 ------------------------------------------------------------------------
 -- BOOSTER QUIZ 3-11-1
@@ -59,7 +59,9 @@ https://dev.mysql.com/doc/refman/8.0/en/string-functions.html를 참고해 다�
     276414  S003     M2942   2022-11-29 07:08:00  202211  
     289025  S003     M2942   2022-12-19 07:08:00  202212
 
-
+SELECT ord_no, shop_id, mbr_id, ord_dtm, DATE_FORMAT(ord_dtm, '%Y%m') ord_ym FROM tr_ord
+WHERE shop_id = 'S003' AND mbr_id = 'M2942' AND YEAR(ord_dtm) = 2022 -- AND ord_ym = '2022'로 변경해도 될까요?
+ORDER BY ord_dtm ASC;
    
    
 ------------------------------------------------------------------------
@@ -73,7 +75,7 @@ https://dev.mysql.com/doc/refman/8.0/en/string-functions.html를 참고해 다�
   ㅁ 조회 항목: ord_no, ord_dtm, pkup_dtm, 픽업까지걸린시간(분)
   ㅁ 픽업까지걸린시간(분): ord_dtm에서 pkup_dtm까지 걸린 분(MINUTE) 차이입니다.
     ㅇ TIMESTAMPDIFF를 사용해 처리하세요.
-    ㅇ 픽업까지걸린시간(분)과 같이 컬럼 별칭에 괄호가 있으므로 별칭에 백틱(`)을 사용해야 합니다.
+    ㅇ 픽업까지걸린시간(분)과 같이 컬럼 별칭에 괄호가 있으므로 별칭에 백틱(``)을 사용해야 합니다.
   ㅁ 정렬 기준: 픽업까지걸린시간(분)으로 오름차순 정렬하세요.
 
 결과)
@@ -88,7 +90,9 @@ https://dev.mysql.com/doc/refman/8.0/en/string-functions.html를 참고해 다�
     179617  2022-06-01 06:54:00  2022-06-01 07:02:00  8                    
     179608  2022-06-01 06:42:00  2022-06-01 06:51:00  9                    
 
-
+SELECT ord_no, ord_dtm, pkup_dtm, TIMESTAMPDIFF(MINUTE, ord_dtm, pkup_dtm) `픽업까지걸린시간(분)` FROM tr_ord
+WHERE shop_id = 'S023' AND DATE(ord_dtm) = '2022-06-01'
+ORDER BY TIMESTAMPDIFF(MINUTE, ord_dtm, pkup_dtm) ASC;
    
    
 ------------------------------------------------------------------------
@@ -113,6 +117,9 @@ https://dev.mysql.com/doc/refman/8.0/en/string-functions.html를 참고해 다�
     M2456   2020-05-01 00:00:00  2021-08-10 00:00:00  202005  202108  466          
     M2466   2020-04-29 00:00:00  2021-08-18 00:00:00  202004  202108  476          
 
+SELECT mbr_id, join_dtm, leave_dtm, DATE_FORMAT(join_dtm, '%Y%m') 가입월, DATE_FORMAT(leave_dtm, '%Y%m') 탈퇴월, TIMESTAMPDIFF(DAY, join_dtm, leave_dtm) 회원유지일수 FROM ms_mbr
+WHERE leave_dtm BETWEEN '2021-08-01' AND '2021-08-31'
+ORDER BY TIMESTAMPDIFF(DAY, join_dtm, leave_dtm) ASC;
 
 ------------------------------------------------------------------------
 -- BOOSTER QUIZ 3-11-4
@@ -125,3 +132,8 @@ https://dev.mysql.com/doc/refman/8.0/en/string-functions.html를 참고해 다�
     WHERE   DATE_FORMAT(t1.ord_dtm,'%Y-%m-%d') = '2021-01-03'
     AND     t1.shop_id = 'S001'
     ORDER BY t1.ord_no;
+
+SELECT t1.ord_no, t1.shop_id, t1.ord_dtm FROM startdbmy.tr_ord t1
+WHERE t1.ord_dtm BETWEEN STR_TO_DATE('2021-01-03', '%Y-%m-%d') AND STR_TO_DATE('2021-01-03 23:59:59', '%Y-%m-%d %H:%i:%s')
+AND t1.shop_id = 'S001'
+ORDER BY t1.ord_no;
