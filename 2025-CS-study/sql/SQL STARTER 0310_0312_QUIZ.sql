@@ -60,7 +60,7 @@ SELECT item_id, LPAD(item_id, 10, '0') AS new_item_id, item_nm FROM ms_item;
     289025  S003     M2942   2022-12-19 07:08:00  202212
 
 SELECT ord_no, shop_id, mbr_id, ord_dtm, DATE_FORMAT(ord_dtm, '%Y%m') ord_ym FROM tr_ord
-WHERE shop_id = 'S003' AND mbr_id = 'M2942' AND YEAR(ord_dtm) = 2022 -- AND ord_ym = '2022'로 변경해도 될까요?
+WHERE shop_id = 'S003' AND mbr_id = 'M2942' AND (ord_dtm BETWEEN STR_TO_DATE('2022-01-01', '%Y-%m-%d') AND STR_TO_DATE('2022-12-31 23:59:59', '%Y-%m-%d %H:%i:%s'))
 ORDER BY ord_dtm ASC;
    
    
@@ -91,8 +91,8 @@ ORDER BY ord_dtm ASC;
     179608  2022-06-01 06:42:00  2022-06-01 06:51:00  9                    
 
 SELECT ord_no, ord_dtm, pkup_dtm, TIMESTAMPDIFF(MINUTE, ord_dtm, pkup_dtm) `픽업까지걸린시간(분)` FROM tr_ord
-WHERE shop_id = 'S023' AND DATE(ord_dtm) = '2022-06-01'
-ORDER BY TIMESTAMPDIFF(MINUTE, ord_dtm, pkup_dtm) ASC;
+WHERE shop_id = 'S023' AND (ord_dtm BETWEEN STR_TO_DATE('2022-06-01', '%Y-%m-%d') AND STR_TO_DATE('2022-06-01 23:59:59', '%Y-%m-%d %H:%i:%s'))
+ORDER BY `픽업까지걸린시간(분)` ASC;
    
    
 ------------------------------------------------------------------------
