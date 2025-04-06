@@ -60,7 +60,7 @@ SELECT item_id, LPAD(item_id, 10, '0') AS new_item_id, item_nm FROM ms_item;
     289025  S003     M2942   2022-12-19 07:08:00  202212
 
 SELECT ord_no, shop_id, mbr_id, ord_dtm, DATE_FORMAT(ord_dtm, '%Y%m') ord_ym FROM tr_ord
-WHERE shop_id = 'S003' AND mbr_id = 'M2942' AND (ord_dtm BETWEEN STR_TO_DATE('2022-01-01', '%Y-%m-%d') AND STR_TO_DATE('2022-12-31 23:59:59', '%Y-%m-%d %H:%i:%s'))
+WHERE shop_id = 'S003' AND mbr_id = 'M2942' AND ord_dtm >= STR_TO_DATE('2022-01-01', '%Y-%m-%d') AND ord_dtm < STR_TO_DATE('2023-01-01', '%Y-%m-%d')
 ORDER BY ord_dtm ASC;
    
    
@@ -91,7 +91,7 @@ ORDER BY ord_dtm ASC;
     179608  2022-06-01 06:42:00  2022-06-01 06:51:00  9                    
 
 SELECT ord_no, ord_dtm, pkup_dtm, TIMESTAMPDIFF(MINUTE, ord_dtm, pkup_dtm) `픽업까지걸린시간(분)` FROM tr_ord
-WHERE shop_id = 'S023' AND (ord_dtm BETWEEN STR_TO_DATE('2022-06-01', '%Y-%m-%d') AND STR_TO_DATE('2022-06-01 23:59:59', '%Y-%m-%d %H:%i:%s'))
+WHERE shop_id = 'S023' AND ord_dtm >= STR_TO_DATE('2022-06-01', '%Y-%m-%d') AND ord_dtm < STR_TO_DATE('2022-06-02', '%Y-%m-%d')
 ORDER BY `픽업까지걸린시간(분)` ASC;
    
    
@@ -118,7 +118,7 @@ ORDER BY `픽업까지걸린시간(분)` ASC;
     M2466   2020-04-29 00:00:00  2021-08-18 00:00:00  202004  202108  476          
 
 SELECT mbr_id, join_dtm, leave_dtm, DATE_FORMAT(join_dtm, '%Y%m') 가입월, DATE_FORMAT(leave_dtm, '%Y%m') 탈퇴월, TIMESTAMPDIFF(DAY, join_dtm, leave_dtm) 회원유지일수 FROM ms_mbr
-WHERE leave_dtm BETWEEN '2021-08-01' AND '2021-08-31'
+WHERE leave_dtm >= STR_TO_DATE('2021-08-01', '%Y-%m-%d') AND leave_dtm < STR_TO_DATE('2021-09-01', '%Y-%m-%d')
 ORDER BY TIMESTAMPDIFF(DAY, join_dtm, leave_dtm) ASC;
 
 ------------------------------------------------------------------------
