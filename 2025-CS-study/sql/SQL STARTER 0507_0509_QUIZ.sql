@@ -41,7 +41,7 @@ AND ord_dtm < STR_TO_DATE('20250201','%Y%m%d');
 
 
 답안)
--- mbr_id, order_ymd 이다.
+-- mbr_id + order_ymd 이다.
 -- GROUP BY 절에 있는 mbr_id, order_ymd의 조합으로 생성된 테이블의 행을 식별할 수 있다.
 
 
@@ -60,5 +60,5 @@ AND ord_dtm < STR_TO_DATE('20250201','%Y%m%d');
 
 
 답안)
--- shop_id, ord_hour, ord_st이다. 
+-- shop_id + ord_hour + ord_st이다. 
 -- GROUP BY 절에 있는 shop_id, ord_hour, ord_st의 조합으로 생성된 테이블의 행을 식별할 수 있다.
