@@ -89,7 +89,7 @@ shop_start_ymd가 '20180405'인 매장에 대해, 매장ID별로 '2019년 12월 
     S002     Los Angeles-1st    29         4000.000     137.9310345       
 
 답안)
-SELECT t1.shop_id, MAX(t1.shop_nm) shop_nm, MAX(t1.shop_size) shop_size, SUM(t2.ord_amt) ord_amt_sum, SUM(t2.ord_amt)/t1.shop_size ord_amt_per_size
+SELECT t1.shop_id, MAX(t1.shop_nm) shop_nm, MAX(t1.shop_size) shop_size, SUM(t2.ord_amt) ord_amt_sum, SUM(t2.ord_amt)/MAX(t1.shop_size) ord_amt_per_size
 FROM ms_shop t1, tr_ord t2
 WHERE t1.shop_id = t2.shop_id
 AND t1.shop_start_ymd = '20180405'
