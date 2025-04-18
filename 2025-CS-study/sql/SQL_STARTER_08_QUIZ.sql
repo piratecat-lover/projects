@@ -292,3 +292,26 @@ WHERE EXISTS
   )
 GROUP BY t1.mbr_gd, mbr_gd_nm
 ORDER BY mbr_cnt DESC;
+
+-- One EXISTS
+SELECT t1.mbr_gd,
+  (SELECT x.base_cd_nm
+  FROM startdbmy.cm_base_cd AS x
+  WHERE x.base_cd_dv = 'MBR_GD'
+  AND x.base_cd = t1.mbr_gd
+  ) mbr_gd_nm,
+  COUNT(DISTINCT t1.mbr_id) mbr_cnt
+FROM startdbmy.ms_mbr AS t1
+WHERE EXISTS 
+	(SELECT *
+	FROM startdbmy.tr_ord o
+	JOIN startdbmy.tr_ord_det d
+    ON d.ord_no = o.ord_no
+    AND d.item_id = 'CMFR'
+	WHERE o.mbr_id = t1.mbr_id
+	AND o.ord_dtm >= STR_TO_DATE('20221224','%Y%m%d')
+	AND o.ord_dtm < STR_TO_DATE('20221225','%Y%m%d')
+  	)
+GROUP BY
+  t1.mbr_gd, mbr_gd_nm
+ORDER BY mbr_cnt DESC;
