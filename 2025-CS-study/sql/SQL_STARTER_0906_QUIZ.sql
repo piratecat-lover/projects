@@ -31,13 +31,13 @@
 
 답안)
 SELECT t1.ym, t1.mbr_cnt, t2.shop_cnt
-FROM (SELECT DATE_FORMAT(join_dtm, '%Y%m') AS ym, COUNT(*) AS mbr_cnt
+FROM (SELECT DATE_FORMAT(join_dtm, '%Y%m') ym, COUNT(*) mbr_cnt
       FROM ms_mbr
       WHERE join_dtm >= STR_TO_DATE('2022-05-01', '%Y-%m-%d')
         AND join_dtm < STR_TO_DATE('2022-07-01', '%Y-%m-%d')
       GROUP BY ym
       ) t1
-LEFT JOIN (SELECT DATE_FORMAT(shop_start_ymd, '%Y%m') AS ym, COUNT(*) AS shop_cnt
+LEFT JOIN (SELECT DATE_FORMAT(shop_start_ymd, '%Y%m') ym, COUNT(*) shop_cnt
            FROM ms_shop
            WHERE shop_start_ymd >= STR_TO_DATE('2022-05-01', '%Y-%m-%d')
              AND shop_start_ymd < STR_TO_DATE('2022-07-01', '%Y-%m-%d')
@@ -70,20 +70,20 @@ ym      mbr_cnt  shop_cnt  ord_cnt
 
 답안)
 SELECT t1.ym, t1.mbr_cnt, t2.shop_cnt, t3.ord_cnt
-FROM (SELECT DATE_FORMAT(join_dtm, '%Y%m') AS ym, COUNT(*) AS mbr_cnt
+FROM (SELECT DATE_FORMAT(join_dtm, '%Y%m') ym, COUNT(*) mbr_cnt
       FROM ms_mbr
       WHERE join_dtm >= STR_TO_DATE('2022-05-01', '%Y-%m-%d')
         AND join_dtm < STR_TO_DATE('2022-07-01', '%Y-%m-%d')
       GROUP BY ym
       ) t1
-LEFT JOIN (SELECT DATE_FORMAT(shop_start_ymd, '%Y%m') AS ym, COUNT(*) AS shop_cnt
+LEFT JOIN (SELECT DATE_FORMAT(shop_start_ymd, '%Y%m') ym, COUNT(*) shop_cnt
            FROM ms_shop
            WHERE shop_start_ymd >= STR_TO_DATE('2022-05-01', '%Y-%m-%d')
              AND shop_start_ymd < STR_TO_DATE('2022-07-01', '%Y-%m-%d')
            GROUP BY ym
            ) t2
 ON t1.ym = t2.ym
-LEFT JOIN (SELECT DATE_FORMAT(ord_dtm, '%Y%m') AS ym, COUNT(*) AS ord_cnt
+LEFT JOIN (SELECT DATE_FORMAT(ord_dtm, '%Y%m') ym, COUNT(*) ord_cnt
            FROM tr_ord
            WHERE ord_dtm >= STR_TO_DATE('2022-05-01', '%Y-%m-%d')
              AND ord_dtm < STR_TO_DATE('2022-07-01', '%Y-%m-%d')
