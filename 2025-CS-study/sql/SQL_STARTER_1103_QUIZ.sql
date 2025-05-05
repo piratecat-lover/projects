@@ -20,7 +20,18 @@
     BEV       Beverage     1369         3                    
 
 답안)
-
+SELECT t3.item_cat, t4.item_cat_nm, SUM (t2.ord_qty) ord_qty_sum, RANK() OVER (ORDER BY SUM (t2.ord_qty) DESC) ord_qty_sum_rank_ov
+FROM tr_ord t1
+JOIN tr_ord_det t2
+ON t1.ord_no = t2.ord_no
+JOIN ms_item t3
+ON t2.item_id = t3.item_id
+JOIN ms_item_cat t4
+ON t3.item_cat = t4.item_cat
+WHERE t1.ord_dtm >= STR_TO_DATE('20220101', '%Y%m%d') 
+AND t1.ord_dtm < STR_TO_DATE('20220201', '%Y%m%d')
+GROUP BY t4.item_cat, t4.item_cat_nm
+ORDER BY ord_qty_sum_rank_ov;
 
 
 ------------------------------------------------------------------------
@@ -49,6 +60,17 @@
     FLAG          Flagship         1559000.000   3.86             
 
 답안)
-
+SELECT t1.shop_oper_tp, t3.base_cd_nm shop_oper_tp_nm, SUM (t2.ord_amt) ord_amt_sum, ROUND(SUM (t2.ord_amt) / SUM (SUM (t2.ord_amt)) OVER () * 100, 2) ord_amt_sum_pct
+FROM ms_shop t1
+JOIN tr_ord t2
+ON t1.shop_id = t2.shop_id
+JOIN cm_base_cd t3
+ON (t3.base_cd_dv = 'SHOP_OPER_TP' 
+  AND t1.shop_oper_tp = t3.base_cd
+)
+WHERE t2.ord_dtm >= STR_TO_DATE('20220101', '%Y%m%d')
+AND t2.ord_dtm < STR_TO_DATE('20220201', '%Y%m%d')
+GROUP BY t1.shop_oper_tp, t3.base_cd_nm
+ORDER BY ord_amt_sum_pct DESC;
 
 
